@@ -1,0 +1,93 @@
+{
+  "name": "@icp-sdk/core",
+  "version": "4.1.1",
+  "author": "DFINITY Stiftung <sdk@dfinity.org>",
+  "license": "Apache-2.0",
+  "description": "JavaScript and TypeScript library to interact with the Internet Computer",
+  "homepage": "https://js.icp.build/core/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfinity/icp-js-core.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/dfinity/icp-js-core/issues"
+  },
+  "keywords": [
+    "internet computer",
+    "internet-computer",
+    "ic",
+    "dfinity",
+    "agent",
+    "actor",
+    "dfx",
+    "canister",
+    "candid",
+    "motoko",
+    "javascript",
+    "typescript",
+    "blockchain",
+    "crypto",
+    "distributed",
+    "api",
+    "sdk"
+  ],
+  "peerDependencies": {
+    "@dfinity/agent": "3.3.1",
+    "@dfinity/identity": "3.3.1",
+    "@dfinity/identity-secp256k1": "3.3.1",
+    "@dfinity/principal": "3.3.1",
+    "@dfinity/candid": "3.3.1"
+  },
+  "types": "./lib/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/esm/index.d.ts",
+      "import": "./lib/esm/index.js",
+      "node": "./lib/cjs/index.js",
+      "require": "./lib/cjs/index.js",
+      "default": "./lib/esm/index.js"
+    },
+    "./agent": {
+      "types": "./lib/esm/agent/index.d.ts",
+      "import": "./lib/esm/agent/index.js",
+      "node": "./lib/cjs/agent/index.js",
+      "require": "./lib/cjs/agent/index.js",
+      "default": "./lib/esm/agent/index.js"
+    },
+    "./candid": {
+      "types": "./lib/esm/candid/index.d.ts",
+      "import": "./lib/esm/candid/index.js",
+      "node": "./lib/cjs/candid/index.js",
+      "require": "./lib/cjs/candid/index.js",
+      "default": "./lib/esm/candid/index.js"
+    },
+    "./identity": {
+      "types": "./lib/esm/identity/index.d.ts",
+      "import": "./lib/esm/identity/index.js",
+      "node": "./lib/cjs/identity/index.js",
+      "require": "./lib/cjs/identity/index.js",
+      "default": "./lib/esm/identity/index.js"
+    },
+    "./identity/secp256k1": {
+      "types": "./lib/esm/identity/secp256k1/index.d.ts",
+      "import": "./lib/esm/identity/secp256k1/index.js",
+      "node": "./lib/cjs/identity/secp256k1/index.js",
+      "require": "./lib/cjs/identity/secp256k1/index.js",
+      "default": "./lib/esm/identity/secp256k1/index.js"
+    },
+    "./principal": {
+      "types": "./lib/esm/principal/index.d.ts",
+      "import": "./lib/esm/principal/index.js",
+      "node": "./lib/cjs/principal/index.js",
+      "require": "./lib/cjs/principal/index.js",
+      "default": "./lib/esm/principal/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -b && tsc -p tsconfig.cjs.json && cp src/package.json lib/esm/package.json",
+    "build:watch": "tsc -b --watch",
+    "bundle": "esbuild --bundle src/index.ts --outfile=dist/index.js --platform=browser",
+    "attw": "attw --pack . --profile node16"
+  }
+}

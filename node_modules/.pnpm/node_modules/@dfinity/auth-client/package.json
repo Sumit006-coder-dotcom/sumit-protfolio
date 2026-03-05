@@ -1,0 +1,65 @@
+{
+  "name": "@dfinity/auth-client",
+  "version": "3.3.1",
+  "author": "DFINITY Stiftung <sdk@dfinity.org>",
+  "license": "Apache-2.0",
+  "description": "JavaScript and TypeScript library to provide a simple integration with an IC Internet Identity",
+  "homepage": "https://js.icp.build/core/v3.2/libs/auth-client",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfinity/icp-js-core.git",
+    "directory": "packages/auth-client"
+  },
+  "bugs": {
+    "url": "https://github.com/dfinity/icp-js-core/issues"
+  },
+  "keywords": [
+    "internet computer",
+    "ic",
+    "dfinity",
+    "canister",
+    "webauthn",
+    "identity",
+    "principal",
+    "authentication",
+    "dfx",
+    "candid",
+    "motoko",
+    "javascript",
+    "typescript",
+    "blockchain",
+    "crypto",
+    "distributed",
+    "api"
+  ],
+  "type": "module",
+  "browser": "./lib/esm/index.js",
+  "module": "./lib/esm/index.js",
+  "default": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
+  "exports": {
+    "types": "./lib/esm/index.d.ts",
+    "import": "./lib/esm/index.js",
+    "default": "./lib/esm/index.js"
+  },
+  "peerDependencies": {
+    "@dfinity/agent": "3.3.1",
+    "@dfinity/identity": "3.3.1",
+    "@dfinity/principal": "3.3.1"
+  },
+  "dependencies": {
+    "idb": "^7.0.2"
+  },
+  "devDependencies": {
+    "jest-environment-jsdom": "^29.7.0",
+    "@dfinity/candid": "3.3.1"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "build:watch": "tsc -b --watch",
+    "bundle": "esbuild --bundle src/index.ts --outfile=dist/index.js --platform=browser",
+    "attw": "attw --pack . --profile esm-only --ignore-rules internal-resolution-error",
+    "test": "jest",
+    "test:coverage": "jest --collectCoverage"
+  }
+}

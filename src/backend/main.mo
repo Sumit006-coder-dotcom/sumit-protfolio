@@ -1,0 +1,7 @@
+import Text "mo:core/Text";
+
+actor {
+  public func greet(name : Text) : async Text {
+    "Hello, " # name # "!";
+  };
+};
