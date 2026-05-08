@@ -176,11 +176,11 @@ export function Hero() {
           style={{ borderColor: "oklch(88% 0.008 240)" }}
         >
           {[
-            { value: "2", label: "ML Projects" },
-            { value: "5+", label: "Certifications" },
-            { value: "81%", label: "Best Model Accuracy" },
-            { value: "6+", label: "Tools & Libraries" },
-          ].map((stat) => (
+  { value: "3", label: "ML Projects" },
+  { value: "2", label: "Certifications" },
+  { value: "85%", label: "Best Model Accuracy" },
+  { value: "10+", label: "Tools & Libraries" },
+].map((stat) => (
             <div key={stat.label} className="flex flex-col">
               <span
                 className="font-display font-black text-3xl leading-none tracking-tight"

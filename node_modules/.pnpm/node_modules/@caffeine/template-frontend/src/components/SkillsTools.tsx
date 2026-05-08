@@ -3,53 +3,56 @@ import { useInView } from "../hooks/useInView";
 const skillGroups = [
   {
     number: "1",
-    category: "Programming & Data",
-    items: ["Python", "Pandas", "NumPy", "Java", "SQL"],
+    category: "Programming",
+    items: ["Python", "SQL"],
   },
   {
     number: "2",
+    category: "Data Analysis",
+    items: [
+      "Pandas",
+      "NumPy",
+      "EDA",
+      "Data Visualization",
+      "Feature Engineering",
+    ],
+  },
+  {
+    number: "3",
     category: "Machine Learning",
     items: [
       "Regression",
       "Classification",
       "Clustering",
+      "NLP",
       "Model Evaluation",
       "Scikit-learn",
-      "Basic NLP (TF-IDF)",
-    ],
-  },
-  {
-    number: "3",
-    category: "Data Analysis",
-    items: [
-      "EDA",
-      "Data Cleaning",
-      "Feature Engineering",
-      "Matplotlib",
-      "Seaborn",
     ],
   },
   {
     number: "4",
-    category: "BI & Dashboards",
-    items: ["Power BI", "DAX basics", "Dashboard design"],
+    category: "Deep Learning",
+    items: [
+      "LSTM",
+      "Neural Networks",
+      "TensorFlow",
+    ],
   },
   {
     number: "5",
-    category: "Deployment (Beginner)",
+    category: "Tools & Deployment",
     items: [
-      "Streamlit",
       "Flask",
+      "Streamlit",
       "Git",
-      "GitHub",
-      "VS Code",
       "Jupyter Notebook",
+      "VS Code",
     ],
   },
   {
     number: "6",
-    category: "CS Fundamentals",
-    items: ["Data Structures & Algorithms", "OOP"],
+    category: "Cloud & Database",
+    items: ["AWS SageMaker", "MySQL"],
   },
 ];
 

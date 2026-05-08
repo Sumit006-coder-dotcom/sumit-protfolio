@@ -1,6 +1,8 @@
 import {
+  Brain,
   CheckCircle2,
   CloudRain,
+  Database,
   ExternalLink,
   Github,
   MessageSquare,
@@ -10,17 +12,17 @@ import { useInView } from "../hooks/useInView";
 const projects = [
   {
     number: "01",
-    title: "Weather Prediction",
+    title: "Weather Prediction using AI",
     subtitle: "Regression · EDA · Feature Engineering",
     description:
-      "Built a regression model to predict temperature from historical weather data. Performed thorough exploratory data analysis and feature engineering to improve model performance.",
+      "Built a regression-based machine learning model on 10K+ weather records to predict weather conditions with high accuracy using data mining and AI techniques.",
     highlights: [
-      "Regression model for temperature prediction",
+      "Processed 10K+ weather records",
       "Performed EDA + feature engineering",
-      "Achieved 81% Accuracy",
+      "Achieved 85% model accuracy",
     ],
-    metric: { value: "81%", label: "Accuracy" },
-    githubUrl: "https://github.com/Sumit006-coder-dotcom/weather-prediction-ai",
+    metric: { value: "85%", label: "Accuracy" },
+    githubUrl: "YOUR_GITHUB_LINK",
     icon: CloudRain,
     accentColor: "oklch(72% 0.18 85)",
     accentBg: "oklch(72% 0.18 85 / 0.08)",
@@ -29,23 +31,41 @@ const projects = [
   },
   {
     number: "02",
-    title: "Sentiment Analysis",
-    subtitle: "NLP · TF-IDF · Classification",
+    title: "Student Performance Analysis",
+    subtitle: "Classification · EDA · Visualization",
     description:
-      "Built an NLP classifier using TF-IDF vectorization and machine learning to analyze Kindle reviews. Handled class imbalance and evaluated with F1-score for robust performance.",
+      "Developed classification models on 5K+ student records to predict academic performance and identify factors affecting outcomes.",
     highlights: [
-      "NLP classifier using TF-IDF + ML model",
-      "Cleaned text, handled imbalance",
-      "Evaluated using F1-score",
+      "Classification model for prediction",
+      "Conducted detailed EDA",
+      "Created data-driven visual insights",
     ],
-    metric: { value: "NLP", label: "Classifier" },
-    githubUrl:
-      "https://github.com/Sumit006-coder-dotcom/NLP--Kindle-Review-Sentiment-Analysis",
-    icon: MessageSquare,
+    metric: { value: "5K+", label: "Records" },
+    githubUrl: "YOUR_GITHUB_LINK",
+    icon: Database,
     accentColor: "oklch(60% 0.15 220)",
     accentBg: "oklch(60% 0.15 220 / 0.08)",
     vizBg: "oklch(16% 0.025 240)",
     flipped: true,
+  },
+  {
+    number: "03",
+    title: "Next Word Prediction using LSTM",
+    subtitle: "Deep Learning · NLP · TensorFlow",
+    description:
+      "Designed and trained an LSTM-based deep learning model using NLP techniques to generate context-aware next-word predictions.",
+    highlights: [
+      "Built using LSTM neural networks",
+      "Trained on Shakespeare dataset",
+      "Deployed interactive Streamlit app",
+    ],
+    metric: { value: "LSTM", label: "Deep Learning" },
+    githubUrl: "YOUR_GITHUB_LINK",
+    icon: Brain,
+    accentColor: "oklch(72% 0.18 85)",
+    accentBg: "oklch(72% 0.18 85 / 0.08)",
+    vizBg: "oklch(18% 0.02 240)",
+    flipped: false,
   },
 ];
 

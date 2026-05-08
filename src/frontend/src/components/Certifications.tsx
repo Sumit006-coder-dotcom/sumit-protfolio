@@ -3,29 +3,16 @@ import { useInView } from "../hooks/useInView";
 
 const certs = [
   {
-    title: "Machine Learning with Python — Level 1",
-    issuer: "IBM / Coursera",
-    description: "Foundational ML concepts and Python implementation",
+    title: "Complete Data Science & Machine Learning Bootcamp (99 hrs)",
+    issuer: "Udemy",
+    description:
+      "Covered machine learning algorithms, NLP, deep learning, Flask deployment, and real-world ML projects.",
   },
   {
     title: "AWS Academy Machine Learning Foundations",
-    issuer: "Amazon Web Services",
-    description: "Cloud-based ML deployment and AWS services",
-  },
-  {
-    title: "Applied Data Science with Python — Level 2",
-    issuer: "IBM / Coursera",
-    description: "Advanced data science techniques and applications",
-  },
-  {
-    title: "Data Analysis with Python",
-    issuer: "IBM / Coursera",
-    description: "Comprehensive data analysis and visualization skills",
-  },
-  {
-    title: "Google Cloud Platform",
-    issuer: "Google",
-    description: "Cloud computing and data engineering fundamentals",
+    issuer: "AWS Academy",
+    description:
+      "Learned machine learning fundamentals and cloud-based ML workflows using AWS services.",
   },
 ];
 

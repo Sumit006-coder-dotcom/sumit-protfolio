@@ -4,15 +4,15 @@ import { useInView } from "../hooks/useInView";
 const highlights = [
   {
     icon: Zap,
-    text: "Python, SQL, EDA, ML (Scikit-learn)",
+    text: "Python, SQL, Pandas, NumPy, EDA & Scikit-learn",
   },
   {
     icon: TrendingUp,
-    text: "Built ML projects: Weather Prediction, Sentiment Analysis",
+    text: "Built ML & Deep Learning projects using Regression, NLP and LSTM",
   },
   {
     icon: Target,
-    text: "Learning Power BI & ML deployment (Flask/Streamlit)",
+    text: "Working with Flask, Streamlit, TensorFlow and AWS SageMaker",
   },
 ];
 
