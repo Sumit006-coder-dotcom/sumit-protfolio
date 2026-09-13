@@ -1,5 +1,6 @@
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { roleContent, type PortfolioRole } from "../portfolioData";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -10,7 +11,7 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-export function NavBar() {
+export function NavBar({ role }: { role: PortfolioRole }) {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,7 +19,6 @@ export function NavBar() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-
       const sections = navLinks.map((l) => l.href.replace("#", ""));
       for (const section of [...sections].reverse()) {
         const el = document.getElementById(section);
@@ -28,18 +28,19 @@ export function NavBar() {
         }
       }
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
-    const id = href.replace("#", "");
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    document.getElementById(href.replace("#", ""))?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
+  const switchRole = (nextRole: PortfolioRole) => {
+    window.location.href = nextRole === "analytics" ? "?role=analytics" : "?role=data-science";
   };
 
   return (
@@ -50,42 +51,34 @@ export function NavBar() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
         <button
           type="button"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-2 group"
+          className="flex items-center gap-2 group flex-shrink-0"
         >
           <div
             className="w-9 h-9 rounded-md flex items-center justify-center font-display font-black text-sm tracking-tight"
-            style={{
-              background: "oklch(72% 0.18 85)",
-              color: "oklch(15% 0.01 240)",
-            }}
+            style={{ background: "oklch(72% 0.18 85)", color: "oklch(15% 0.01 240)" }}
           >
             SK
           </div>
-          <span className="font-display font-semibold text-sm text-foreground hidden sm:block group-hover:text-amber transition-colors">
+          <span className="font-display font-semibold text-sm hidden sm:block group-hover:text-amber transition-colors">
             Sumit Karn
           </span>
         </button>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-1">
           {navLinks.map((link, i) => {
             const sectionId = link.href.replace("#", "");
-            const isActive = activeSection === sectionId;
             return (
               <button
                 type="button"
                 key={link.href}
                 data-ocid={`nav.link.${i + 1}`}
                 onClick={() => handleNavClick(link.href)}
-                className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200 underline-draw ${
-                  isActive
-                    ? "text-amber"
-                    : "text-muted-foreground hover:text-foreground"
+                className={`px-2.5 py-1.5 rounded-md text-xs font-medium transition-all underline-draw ${
+                  activeSection === sectionId ? "text-amber" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {link.label}
@@ -94,10 +87,26 @@ export function NavBar() {
           })}
         </nav>
 
-        {/* Mobile menu toggle */}
+        <div className="hidden md:flex items-center gap-1 p-1 rounded-lg border border-border bg-background/70">
+          <button
+            type="button"
+            onClick={() => switchRole("analytics")}
+            className={`px-2.5 py-1.5 rounded-md text-xs font-semibold transition-colors ${role === "analytics" ? "bg-amber text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+          >
+            Analytics
+          </button>
+          <button
+            type="button"
+            onClick={() => switchRole("data-science")}
+            className={`px-2.5 py-1.5 rounded-md text-xs font-semibold transition-colors ${role === "data-science" ? "bg-amber text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+          >
+            Data Science
+          </button>
+        </div>
+
         <button
           type="button"
-          className="md:hidden p-2 rounded-md text-muted-foreground hover:text-foreground transition-colors"
+          className="md:hidden p-2 rounded-md text-muted-foreground hover:text-foreground"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -105,33 +114,21 @@ export function NavBar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
-      <div
-        className={`md:hidden transition-all duration-300 overflow-hidden ${
-          menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        } bg-background/95 backdrop-blur-md border-b border-border`}
-      >
-        <nav className="flex flex-col px-6 py-4 gap-1">
-          {navLinks.map((link, i) => {
-            const sectionId = link.href.replace("#", "");
-            const isActive = activeSection === sectionId;
-            return (
-              <button
-                type="button"
-                key={link.href}
-                data-ocid={`nav.link.${i + 1}`}
-                onClick={() => handleNavClick(link.href)}
-                className={`text-left px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive
-                    ? "text-amber bg-amber/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                }`}
-              >
+      <div className={`md:hidden transition-all duration-300 overflow-hidden ${menuOpen ? "max-h-[32rem] opacity-100" : "max-h-0 opacity-0"} bg-background/95 backdrop-blur-md border-b border-border`}>
+        <div className="px-6 py-4">
+          <div className="flex gap-2 mb-3">
+            <button type="button" onClick={() => switchRole("analytics")} className={`flex-1 py-2 rounded-md text-xs font-semibold ${role === "analytics" ? "bg-amber text-foreground" : "bg-muted text-muted-foreground"}`}>Data Analytics</button>
+            <button type="button" onClick={() => switchRole("data-science")} className={`flex-1 py-2 rounded-md text-xs font-semibold ${role === "data-science" ? "bg-amber text-foreground" : "bg-muted text-muted-foreground"}`}>Data Science</button>
+          </div>
+          <nav className="flex flex-col gap-1">
+            {navLinks.map((link) => (
+              <button type="button" key={link.href} onClick={() => handleNavClick(link.href)} className="text-left px-3 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-muted">
                 {link.label}
               </button>
-            );
-          })}
-        </nav>
+            ))}
+          </nav>
+          <p className="text-[10px] text-muted-foreground mt-3 text-center">{roleContent[role].label}</p>
+        </div>
       </div>
     </header>
   );

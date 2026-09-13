@@ -6,7 +6,7 @@ const certs = [
     title: "Complete Data Science & Machine Learning Bootcamp (99 hrs)",
     issuer: "Udemy",
     description:
-      "Covered machine learning algorithms, NLP, deep learning, Flask deployment, and real-world ML projects.",
+      "Covered machine learning algorithms, model evaluation, NLP, deep learning, and practical Data Science projects.",
   },
   {
     title: "AWS Academy Machine Learning Foundations",

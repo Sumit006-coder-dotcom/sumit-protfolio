@@ -8,42 +8,29 @@ import {
   Wrench,
 } from "lucide-react";
 import { useInView } from "../hooks/useInView";
+import { type PortfolioRole } from "../portfolioData";
 
-const steps = [
-  {
-    icon: Database,
-    label: "Data Collection",
-    description: "Gathering & sourcing raw data",
-  },
-  {
-    icon: Search,
-    label: "EDA",
-    description: "Exploratory analysis & patterns",
-  },
-  {
-    icon: Wrench,
-    label: "Feature Engineering",
-    description: "Crafting meaningful features",
-  },
-  {
-    icon: Brain,
-    label: "Model Building",
-    description: "Training & tuning algorithms",
-  },
-  {
-    icon: BarChart3,
-    label: "Evaluation",
-    description: "Metrics & validation",
-  },
-  {
-    icon: Rocket,
-    label: "Deployment",
-    description: "Production-ready models",
-  },
+const analyticsSteps = [
+  { icon: Database, label: "Data Collection", description: "Source & understand raw data" },
+  { icon: Wrench, label: "Cleaning", description: "Handle missing values & quality issues" },
+  { icon: Search, label: "EDA", description: "Find trends, patterns & anomalies" },
+  { icon: BarChart3, label: "Visualization", description: "Build KPIs & communicate insights" },
+  { icon: Brain, label: "Predictive Analysis", description: "Forecast or detect unusual behavior" },
+  { icon: Rocket, label: "Recommendations", description: "Turn findings into actions" },
 ];
 
-export function DataPipeline() {
+const dataScienceSteps = [
+  { icon: Database, label: "Data Preparation", description: "Clean & structure raw data" },
+  { icon: Search, label: "EDA", description: "Explore patterns & relationships" },
+  { icon: Wrench, label: "Feature Engineering", description: "Create meaningful features" },
+  { icon: Brain, label: "Model Building", description: "Train predictive algorithms" },
+  { icon: BarChart3, label: "Evaluation", description: "Validate metrics & performance" },
+  { icon: Rocket, label: "Deployment", description: "Deliver usable ML applications" },
+];
+
+export function DataPipeline({ role }: { role: PortfolioRole }) {
   const [sectionRef, isInView] = useInView<HTMLElement>();
+  const steps = role === "analytics" ? analyticsSteps : dataScienceSteps;
 
   return (
     <section
@@ -68,15 +55,15 @@ export function DataPipeline() {
                 color: "oklch(20% 0.01 240)",
               }}
             >
-              Data Science Workflow
+              {role === "analytics" ? "Data Analytics Workflow" : "Data Science Workflow"}
             </h2>
             <p
               className="max-w-md font-body text-sm leading-relaxed self-end"
               style={{ color: "oklch(55% 0.01 240)" }}
             >
-              My approach follows industry-standard practices from raw data to
-              production-ready models, ensuring quality and reliability at every
-              stage.
+              {role === "analytics"
+                ? "My workflow moves from raw data to analysis, visualization, and business recommendations, with predictive methods where they add value."
+                : "My workflow moves from raw data to EDA, feature engineering, modeling, evaluation, explainability, and deployment."}
             </p>
           </div>
         </div>

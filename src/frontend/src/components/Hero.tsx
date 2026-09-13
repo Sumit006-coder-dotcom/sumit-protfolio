@@ -1,7 +1,9 @@
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { profile, roleContent, type PortfolioRole } from "../portfolioData";
 import { useEffect, useRef } from "react";
 
-export function Hero() {
+export function Hero({ role }: { role: PortfolioRole }) {
+  const content = roleContent[role];
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -107,7 +109,7 @@ export function Hero() {
             className="mt-3 font-body text-sm tracking-widest uppercase font-medium"
             style={{ color: "oklch(60% 0.15 220)" }}
           >
-            Aspiring Data Scientist · Python · SQL · ML
+            {content.eyebrow}
           </div>
         </div>
 
@@ -116,21 +118,13 @@ export function Hero() {
           className="font-body text-lg leading-relaxed max-w-xl mb-10"
           style={{ color: "oklch(45% 0.01 240)" }}
         >
-          Building real-world ML & analytics projects —{" "}
-          <span className="text-amber font-semibold">Fraud Detection</span>,{" "}
-          <span
-            style={{ color: "oklch(60% 0.15 220)" }}
-            className="font-semibold"
-          >
-            NLP
-          </span>
-          , & <span className="text-amber font-semibold">Dashboards</span>.
+          {content.tagline}
         </p>
 
         {/* CTAs — tiered hierarchy: dominant primary, secondary outline, ghost text link */}
         <div className="flex flex-wrap items-center gap-3 mb-10">
           <a
-            href="mailto:sumitkarn2005@gmail.com"
+            href={`mailto:${profile.email}`}
             data-ocid="hero.primary_button"
             className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-md font-bold text-base transition-all duration-200 hover:-translate-y-0.5 hover:shadow-amber-glow"
             style={{
@@ -144,7 +138,7 @@ export function Hero() {
             <ArrowRight size={15} />
           </a>
           <a
-            href="https://www.linkedin.com/in/sumit-karn-86606524a"
+            href={profile.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             data-ocid="hero.secondary_button"
@@ -159,7 +153,7 @@ export function Hero() {
             LinkedIn
           </a>
           <a
-            href="https://github.com/Sumit006-coder-dotcom"
+            href={profile.github}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 px-3 py-3.5 text-sm font-medium transition-colors underline-draw"
@@ -175,12 +169,7 @@ export function Hero() {
           className="flex flex-wrap items-center gap-10 pt-6 border-t"
           style={{ borderColor: "oklch(88% 0.008 240)" }}
         >
-          {[
-  { value: "3", label: "ML Projects" },
-  { value: "2", label: "Certifications" },
-  { value: "85%", label: "Best Model Accuracy" },
-  { value: "10+", label: "Tools & Libraries" },
-].map((stat) => (
+          {content.stats.map((stat) => (
             <div key={stat.label} className="flex flex-col">
               <span
                 className="font-display font-black text-3xl leading-none tracking-tight"

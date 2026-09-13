@@ -1,18 +1,19 @@
 import { ArrowRight, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { useInView } from "../hooks/useInView";
+import { profile, type PortfolioRole } from "../portfolioData";
 
 const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "8826739429",
-    href: "tel:8826739429",
+    value: profile.phone,
+    href: `tel:${profile.phone}`,
   },
   {
     icon: Mail,
     label: "Email",
-    value: "sumitkarn2005@gmail.com",
-    href: "mailto:sumitkarn2005@gmail.com",
+    value: profile.email,
+    href: `mailto:${profile.email}`,
   },
   {
     icon: MapPin,
@@ -22,7 +23,7 @@ const contactInfo = [
   },
 ];
 
-export function Contact() {
+export function Contact({ role }: { role: PortfolioRole }) {
   const [sectionRef, isInView] = useInView<HTMLElement>();
   const [contentRef, contentVisible] = useInView<HTMLDivElement>();
 
@@ -62,11 +63,9 @@ export function Contact() {
               className="font-body text-base leading-relaxed mb-10 max-w-lg"
               style={{ color: "oklch(45% 0.01 240)" }}
             >
-              I'm actively seeking fresher or junior roles in Data Analytics,
-              Data Science, or AI/ML where I can learn fast and contribute to
-              real-world projects. With a strong foundation in Python, SQL, and
-              Machine Learning, I'm eager to apply my skills and grow alongside
-              experienced professionals.
+              {role === "analytics"
+                ? "I’m actively seeking entry-level Data Analyst and Analytics opportunities where I can apply Python, SQL, EDA, Power BI, and business analysis to real-world data."
+                : "I’m actively seeking entry-level Data Scientist and ML opportunities where I can apply Python, SQL, statistics, machine learning, explainable AI, and deployment to real-world problems."}
             </p>
 
             {/* CTAs */}
@@ -85,7 +84,7 @@ export function Contact() {
                 <ArrowRight size={14} />
               </a>
               <a
-                href="https://www.linkedin.com/in/sumit-karn-86606524a"
+                href={profile.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 data-ocid="contact.secondary_button"

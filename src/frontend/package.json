@@ -4,12 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build:skip-bindings": "vite build && pnpm copy:env",
-    "build": "vite build && pnpm copy:env",
+    "build:skip-bindings": "vite build",
+    "build": "vite build",
     "copy:env": "cp env.json dist/",
     "typecheck": "tsc --noEmit --pretty",
     "check": "biome check src",
-    "fix": "biome check --write src"
+    "fix": "biome check --write src",
+    "dev": "vite",
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.0",

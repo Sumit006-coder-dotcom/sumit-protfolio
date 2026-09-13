@@ -1,42 +1,24 @@
 import { BarChart3, Brain, Code2, Database } from "lucide-react";
+import { type PortfolioRole } from "../portfolioData";
 import { useInView } from "../hooks/useInView";
 
-const skills = [
-  {
-    icon: Code2,
-    title: "Python & Data Analysis",
-    description: "Data analysis, EDA, automation and ML workflows",
-    tools: ["Python", "Pandas", "NumPy"],
-    accent: "oklch(72% 0.18 85)",
-    accentBg: "oklch(72% 0.18 85 / 0.08)",
-  },
-  {
-    icon: Database,
-    title: "SQL & Databases",
-    description: "Data extraction, joins, aggregations and querying",
-    tools: ["SQL", "MySQL", "Queries"],
-    accent: "oklch(60% 0.15 220)",
-    accentBg: "oklch(60% 0.15 220 / 0.08)",
-  },
-  {
-    icon: Brain,
-    title: "Machine Learning & NLP",
-    description: "Regression, classification, clustering and NLP",
-    tools: ["Scikit-learn", "TensorFlow", "LSTM"],
-    accent: "oklch(72% 0.18 85)",
-    accentBg: "oklch(72% 0.18 85 / 0.08)",
-  },
-  {
-    icon: BarChart3,
-    title: "Deployment & Visualization",
-    description: "Interactive dashboards and ML app deployment",
-    tools: ["Streamlit", "Flask", "Matplotlib"],
-    accent: "oklch(60% 0.15 220)",
-    accentBg: "oklch(60% 0.15 220 / 0.08)",
-  },
-];
+const skillsByRole = {
+  analytics: [
+    { icon: Code2, title: "Python & Data Analysis", description: "Cleaning, transformation, EDA and business analysis", tools: ["Python", "Pandas", "NumPy"], accent: "oklch(72% 0.18 85)", accentBg: "oklch(72% 0.18 85 / 0.08)" },
+    { icon: Database, title: "SQL & Databases", description: "Data extraction, joins, aggregation and analytical queries", tools: ["SQL", "MySQL", "CTEs"], accent: "oklch(60% 0.15 220)", accentBg: "oklch(60% 0.15 220 / 0.08)" },
+    { icon: BarChart3, title: "Power BI & Visualization", description: "KPIs, dashboards and clear communication of insights", tools: ["Power BI", "DAX", "Matplotlib"], accent: "oklch(72% 0.18 85)", accentBg: "oklch(72% 0.18 85 / 0.08)" },
+    { icon: Brain, title: "Analytics + ML", description: "Forecasting, anomaly detection and predictive analysis", tools: ["EDA", "Statistics", "Scikit-learn"], accent: "oklch(60% 0.15 220)", accentBg: "oklch(60% 0.15 220 / 0.08)" },
+  ],
+  "data-science": [
+    { icon: Code2, title: "Python & Data Analysis", description: "Data preparation, EDA and feature engineering", tools: ["Python", "Pandas", "NumPy"], accent: "oklch(72% 0.18 85)", accentBg: "oklch(72% 0.18 85 / 0.08)" },
+    { icon: Database, title: "SQL & Data", description: "Querying and preparing data for ML workflows", tools: ["SQL", "MySQL", "CTEs"], accent: "oklch(60% 0.15 220)", accentBg: "oklch(60% 0.15 220 / 0.08)" },
+    { icon: Brain, title: "Machine Learning", description: "Classification, regression, clustering and anomaly detection", tools: ["Scikit-learn", "XGBoost", "Isolation Forest"], accent: "oklch(72% 0.18 85)", accentBg: "oklch(72% 0.18 85 / 0.08)" },
+    { icon: BarChart3, title: "Evaluation & Deployment", description: "Model evaluation, explainability and interactive ML apps", tools: ["F1-score", "ROC-AUC", "SHAP", "Streamlit"], accent: "oklch(60% 0.15 220)", accentBg: "oklch(60% 0.15 220 / 0.08)" },
+  ],
+} as const;
 
-export function Skills() {
+export function Skills({ role }: { role: PortfolioRole }) {
+  const skills = skillsByRole[role];
   const [headingRef, headingVisible] = useInView<HTMLDivElement>();
   const [skillsRef, skillsVisible] = useInView<HTMLDivElement>();
 

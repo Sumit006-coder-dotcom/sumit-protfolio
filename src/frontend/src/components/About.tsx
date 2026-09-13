@@ -1,22 +1,17 @@
 import { Target, TrendingUp, Zap } from "lucide-react";
+import { roleContent, type PortfolioRole } from "../portfolioData";
 import { useInView } from "../hooks/useInView";
 
-const highlights = [
-  {
-    icon: Zap,
-    text: "Python, SQL, Pandas, NumPy, EDA & Scikit-learn",
-  },
-  {
-    icon: TrendingUp,
-    text: "Built ML & Deep Learning projects using Regression, NLP and LSTM",
-  },
-  {
-    icon: Target,
-    text: "Working with Flask, Streamlit, TensorFlow and AWS SageMaker",
-  },
-];
+const highlightIcons = [Zap, TrendingUp, Target];
 
-export function About() {
+
+
+export function About({ role }: { role: PortfolioRole }) {
+  const content = roleContent[role];
+  const highlights = content.aboutHighlights.map((text, index) => ({
+    icon: highlightIcons[index],
+    text,
+  }));
   const [sectionRef, isInView] = useInView<HTMLElement>();
   const [contentRef, contentVisible] = useInView<HTMLDivElement>();
 
@@ -74,9 +69,7 @@ export function About() {
               className="font-body text-base leading-relaxed mb-8 max-w-sm"
               style={{ color: "oklch(62% 0.01 240)", lineHeight: "1.75" }}
             >
-              Actively seeking fresher roles or internships in Data Analytics,
-              Data Science, or AI/ML. Passionate about turning raw data into
-              actionable insights with clean, efficient code.
+              {content.summary}
             </p>
 
             {/* Decorative element */}
